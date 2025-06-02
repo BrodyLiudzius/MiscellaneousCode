@@ -1,25 +1,57 @@
-#ifndef FLOAT_HPP_INCLUDED
-#define FLOAT_HPP_INCLUDED
-
 /*
-Float types are currently not guaranteed to have the specified width and
-mostly serve as placeholders for now
+This file provides aliases for floating point numbers of different precisions
 */
+
+#ifndef KEKOA_FLOAT_HPP_INCLUDED
+#define KEKOA_FLOAT_HPP_INCLUDED
+
+
+#include <type_traits> // static_assert
+
+
+#define ENFORCE_FLOAT_SIZES
+// #define ENFORCE_F16_SIZE
+// #define ENFORCE_F128_SIZE
+
 
 namespace Kekoa {
 
-	#ifdef __arm__ // Check environment
-		typedef float f16_t; // will be a 32-bit float
-		typedef float f32_t;
-		typedef double f64_t;
-		typedef long double f128_t; // will be 64-bit float
-	#else
-		typedef float f16_t; // width not guaranteed
-		typedef float f32_t; // width not guaranteed
-		typedef double f64_t; // width not guaranteed
-		typedef long double f128_t; // width not guaranteed
+	
+	//// Float Aliases
+
+	// Check Environment
+	#if defined(__arm__) || defined(__aarch64__)  // ARM Environment
+		// Relevant links:
+		//   https://gcc.gnu.org/onlinedocs/gcc/Half-Precision.html
+		//   https://developer.arm.com/documentation/102284/6-16-2LTS/armclang-Reference/Other-Compiler-specific-Features/Half-precision-floating-point-data-types
+		typedef _Float16     f16; // Requires GNU compiler option `-mfp16-format=ieee` or `-mfp16-format=alternative`
+		typedef float        f32;
+		typedef double       f64;
+		typedef long double f128; // Fall back to 64 bit
+	#else // Fallback: C++ Native Floats
+		typedef float        f16; // Fall back to 32 bit
+		typedef float        f32; //  32 bit on most platforms
+		typedef double       f64; //  64 bit on most platforms
+		typedef long double f128; // Fall back to 64 bit
 	#endif // Check environment
+
+
+
+
+	//// Enforcing Float Sizes
+
+	#ifdef ENFORCE_FLOAT_SIZES
+		#ifdef ENFORCE_F16_SIZE
+		static_assert(sizeof(f16) == 2,  "f16 is not 16 bits");
+		#endif //ENFORCE_F16_SIZE
+		static_assert(sizeof(f32) == 4,  "f32 is not 32 bits");
+		static_assert(sizeof(f64) == 8,  "f64 is not 64 bits");
+		#ifdef ENFORCE_F128_SIZE
+		static_assert(sizeof(f128) == 16, "f128 is not 128 bits");
+		#endif //ENFORCE_F128_SIZE
+	#endif //ENFORCE_FLOAT_SIZES
 
 }
 
-#endif //FLOAT_HPP_INCLUDED
+
+#endif //KEKOA_FLOAT_HPP_INCLUDED

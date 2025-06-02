@@ -1,5 +1,5 @@
-#ifndef INT_HPP_INCLUDED
-#define INT_HPP_INCLUDED
+#ifndef KEOKA_INT_HPP_INCLUDED
+#define KEOKA_INT_HPP_INCLUDED
 
 
 namespace Kekoa {
@@ -7,4 +7,4 @@ namespace Kekoa {
 }
 
 
-#endif //INT_HPP_INCLUDED
+#endif //KEOKA_INT_HPP_INCLUDED

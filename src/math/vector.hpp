@@ -1,122 +1,147 @@
-#ifndef VECTOR_HPP_INCLUDED
-#define VECTOR_HPP_INCLUDED
+#ifndef KEKOA_VECTOR_HPP_INCLUDED
+#define KEKOA_VECTOR_HPP_INCLUDED
 
-#include <cmath>
+
+#include <cmath> // std::sqrt
+#include <type_traits> // static_assert, std::is_arithmetic
 
 #include "float.hpp"
 #include "int.hpp"
 
 
 namespace Kekoa {
-	
-	// 2-Vector Types
-	struct vec2_f16_t  {f16_t  x, y;};
-	struct vec2_f32_t  {f32_t  x, y;};
-	struct vec2_f64_t  {f64_t  x, y;};
-	struct vec2_f128_t {f128_t x, y;};
 
-	// 3-Vector Types
-	struct vec3_f16_t  {f16_t  x, y, z;};
-	struct vec3_f32_t  {f32_t  x, y, z;};
-	struct vec3_f64_t  {f64_t  x, y, z;};
-	struct vec3_f128_t {f128_t x, y, z;};
+	////// Vector Type Definitions
 
-	// 4-Vector Types
-	struct vec4_f16_t  {f16_t  x, y, z, w;};
-	struct vec4_f32_t  {f32_t  x, y, z, w;};
-	struct vec4_f64_t  {f64_t  x, y, z, w;};
-	struct vec4_f128_t {f128_t x, y, z, w;};
-
-
+	template <typename T>
+	struct vec2 {
+		static_assert(std::is_arithmetic<T>::value, "vec2 must have an arithmetic type.");
+		T x, y;
+	};
+	template <typename T>
+	struct vec3 {
+		static_assert(std::is_arithmetic<T>::value, "vec3 must have an arithmetic type.");
+		T x, y, z;
+	};
+	template <typename T>
+	struct vec4 {
+		static_assert(std::is_arithmetic<T>::value, "vec4 must have an arithmetic type.");
+		T x, y, z, w;
+	};
 
 
-	// Vector Addition
-	vec2_f16_t 
-
-	// Vector Subtraction
 
 
-	// Dot Product
+	////// Function Declarations
 
 
-	// Cross Product
+	//// Element-wise Operations
 
 
 	// Element-Wise Multiplication
-
+	template <typename T>
+	inline constexpr vec2<T> ElementMultiply(const vec2<T> &_lhs, const vec2<T> &_rhs) {
+    	return vec2<T>{_lhs.x*_rhs.x, _lhs.y*_rhs.y};
+	}
+	template <typename T>
+	inline constexpr vec3<T> ElementMultiply(const vec3<T> &_lhs, const vec3<T> &_rhs) {
+    	return vec3<T>{_lhs.x*_rhs.x, _lhs.y*_rhs.y, _lhs.z*_rhs.z};
+	}
+	template <typename T>
+	inline constexpr vec4<T> ElementMultiply(const vec4<T> &_lhs, const vec4<T> &_rhs) {
+    	return vec4<T>{_lhs.x*_rhs.x, _lhs.y*_rhs.y, _lhs.z*_rhs.z, _lhs.w*_rhs.w};
+	}
 
 	// Element-Wise Division
+	template <typename T>
+	inline constexpr vec2<T> ElementDivision(const vec2<T> &_lhs, const vec2<T> &_rhs) {
+    	return vec2<T>{_lhs.x / _rhs.x, _lhs.y / _rhs.y};
+	}
+	template <typename T>
+	inline constexpr vec3<T> ElementDivision(const vec3<T> &_lhs, const vec3<T> &_rhs) {
+    	return vec3<T>{_lhs.x / _rhs.x, _lhs.y / _rhs.y, _lhs.z / _rhs.z};
+	}
+	template <typename T>
+	inline constexpr vec4<T> ElementDivision(const vec4<T> &_lhs, const vec4<T> &_rhs) {
+    	return vec4<T>{_lhs.x / _rhs.x, _lhs.y / _rhs.y, _lhs.z / _rhs.z, _lhs.w / _rhs.w};
+	}
 
 
-	// Magnitude
-	f16_t  Magnitude(const vec2_f16_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y);}
-	f32_t  Magnitude(const vec2_f32_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y);}
-	f64_t  Magnitude(const vec2_f64_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y);}
-	f128_t Magnitude(const vec2_f128_t &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y);}
+	//// Vector Operations
+
+
+	// Vector Addition
+	template <typename T>
+	inline constexpr vec2<T> Add(const vec2<T> &_lhs, const vec2<T> &_rhs) {
+    	return vec2<T>{_lhs.x + _rhs.x, _lhs.y + _rhs.y};
+	}
+	template <typename T>
+	inline constexpr vec3<T> Add(const vec3<T> &_lhs, const vec3<T> &_rhs) {
+    	return vec3<T>{_lhs.x + _rhs.x, _lhs.y + _rhs.y, _lhs.z + _rhs.z};
+	}
+	template <typename T>
+	inline constexpr vec4<T> Add(const vec4<T> &_lhs, const vec4<T> &_rhs) {
+    	return vec4<T>{_lhs.x + _rhs.x, _lhs.y + _rhs.y, _lhs.z + _rhs.z, , _lhs.w + _rhs.w};
+	}
+
+	// Vector Subtraction
+	template <typename T>
+	inline constexpr vec2<T> Subtract(const vec2<T> &_lhs, const vec2<T> &_rhs) {
+    	return vec2<T>{_lhs.x - _rhs.x, _lhs.y - _rhs.y};
+	}
+	template <typename T>
+	inline constexpr vec3<T> Subtract(const vec3<T> &_lhs, const vec3<T> &_rhs) {
+    	return vec3<T>{_lhs.x - _rhs.x, _lhs.y - _rhs.y, _lhs.z - _rhs.z};
+	}
+	template <typename T>
+	inline constexpr vec4<T> Subtract(const vec4<T> &_lhs, const vec4<T> &_rhs) {
+    	return vec4<T>{_lhs.x - _rhs.x, _lhs.y - _rhs.y, _lhs.z - _rhs.z, , _lhs.w - _rhs.w};
+	}
+
+	// Dot Product
+	template <typename T>
+	inline constexpr T DotProduct(const vec2<T> &_lhs, const vec2<T> &_rhs) {
+    	return _lhs.x*_rhs.x + _lhs.y*_rhs.y;
+	}
+	template <typename T>
+	inline constexpr T DotProduct(const vec3<T> &_lhs, const vec3<T> &_rhs) {
+    	return _lhs.x*_rhs.x + _lhs.y*_rhs.y + _lhs.z*_rhs.z;
+	}
+	template <typename T>
+	inline constexpr T DotProduct(const vec4<T> &_lhs, const vec4<T> &_rhs) {
+    	return _lhs.x*_rhs.x + _lhs.y*_rhs.y + _lhs.z*_rhs.z + _lhs.w*_rhs.w;
+	}
 	
-	f16_t  Magnitude(const vec3_f16_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z);}
-	f32_t  Magnitude(const vec3_f32_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z);}
-	f64_t  Magnitude(const vec3_f64_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z);}
-	f128_t Magnitude(const vec3_f128_t &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z);}
 
-	f16_t  Magnitude(const vec4_f16_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z + _vec.w*_vec.w);}
-	f32_t  Magnitude(const vec4_f32_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z + _vec.w*_vec.w);}
-	f64_t  Magnitude(const vec4_f64_t  &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z + _vec.w*_vec.w);}
-	f128_t Magnitude(const vec4_f128_t &_vec) {return std::sqrt(_vec.x*_vec.x + _vec.y*_vec.y + _vec.z*_vec.z + _vec.w*_vec.w);}
-	
+	// Cross Product
+	template <typename T>
+	inline constexpr vec3<T> CrossProduct(const vec3<T> &_lhs, const vec3<T> &_rhs) {
+		return vec3<T>{_lhs.y*_rhs.z - _lhs.z*_rhs.y, _lhs.z*_rhs.x - _lhs.x*_rhs.z, _lhs.x*_rhs.y - _lhs.y*_rhs.x};
+	}
+
+	// Vector Magnitude
+	template <typename T>
+	inline constexpr T Magnitude(const vec2<T> &_vec) {
+    	return std::sqrt(DotProduct(_vec, _vec));
+	}
+	template <typename T>
+	inline constexpr T Magnitude(const vec3<T> &_vec) {
+    	return std::sqrt(DotProduct(_vec, _vec));
+	}
+	template <typename T>
+	inline constexpr T Magnitude(const vec4<T> &_vec) {
+    	return std::sqrt(DotProduct(_vec, _vec));
+	}
+
 	// Normalize
-	vec2_f16_t Normalize(const vec2_f16_t &_vec) {
-		f16_t magnitude = Magnitude(_vec);
-		return vec2_f16_t{_vec.x/magnitude, _vec.y/magnitude};
-	}
-	vec2_f32_t Normalize(const vec2_f32_t &_vec) {
-		f32_t magnitude = Magnitude(_vec);
-		return vec2_f32_t{_vec.x/magnitude, _vec.y/magnitude};
-	}
-	vec2_f64_t Normalize(const vec2_f64_t &_vec) {
-		f64_t magnitude = Magnitude(_vec);
-		return vec2_f64_t{_vec.x/magnitude, _vec.y/magnitude};
-	}
-	vec2_f128_t Normalize(const vec2_f128_t &_vec) {
-		f128_t magnitude = Magnitude(_vec);
-		return vec2_f128_t{_vec.x/magnitude, _vec.y/magnitude};
-	}
 
-	vec3_f16_t Normalize(const vec3_f16_t &_vec) {
-		f16_t magnitude = Magnitude(_vec);
-		return vec3_f16_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude};
-	}
-	vec3_f32_t Normalize(const vec3_f32_t &_vec) {
-		f32_t magnitude = Magnitude(_vec);
-		return vec3_f32_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude};
-	}
-	vec3_f64_t Normalize(const vec3_f64_t &_vec) {
-		f64_t magnitude = Magnitude(_vec);
-		return vec3_f64_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude};
-	}
-	vec3_f128_t Normalize(const vec3_f128_t &_vec) {
-		f128_t magnitude = Magnitude(_vec);
-		return vec3_f128_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude};
-	}
+	// Dot Product
 
-	vec4_f16_t Normalize(const vec4_f16_t &_vec) {
-		f16_t magnitude = Magnitude(_vec);
-		return vec4_f16_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude, _vec.w/magnitude};
-	}
-	vec4_f32_t Normalize(const vec4_f32_t &_vec) {
-		f32_t magnitude = Magnitude(_vec);
-		return vec4_f32_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude, _vec.w/magnitude};
-	}
-	vec4_f64_t Normalize(const vec4_f64_t &_vec) {
-		f64_t magnitude = Magnitude(_vec);
-		return vec4_f64_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude, _vec.w/magnitude};
-	}
-	vec4_f128_t Normalize(const vec4_f128_t &_vec) {
-		f128_t magnitude = Magnitude(_vec);
-		return vec4_f128_t{_vec.x/magnitude, _vec.y/magnitude, _vec.z/magnitude, _vec.w/magnitude};
-	}
+	// Cross Product
+
+	
 
 }
 
 
-#endif //VECTOR_HPP_INCLUDED
+#endif //KEKOA_VECTOR_HPP_INCLUDED

@@ -1,0 +1,14 @@
+#ifndef PID_HPP_INCLUDED
+#define PID_HPP_INCLUDED
+
+namespace Kekoa {
+
+	template <typename T, typename U>
+	U UpdatePID(T &_prevState, const T &_processVariable, const T &_processDerivative, const T &_setpoint, const T &_setpointDerivative, const T &_K) {
+		// complete PID calculation, update _prevState var
+		// return summed PID terms as a single float
+	}
+}
+
+
+#endif //PID_HPP_INCLUDED
