@@ -8,8 +8,8 @@ using namespace Kekoa::Test;
 
 // MATH
 #include "math/int.hpp"
-#include "math/float.hpp"
-#include "math/vector.hpp"
+//#include "math/float.hpp"
+//#include "math/vector.hpp"
 
 
 int main () {
