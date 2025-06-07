@@ -1,5 +1,6 @@
-#ifndef TEST_H_INCLUDED
-#define TEST_H_INCLUDED
+#ifndef KEKOA_TEST_H_INCLUDED
+#define KEKOA_TEST_H_INCLUDED
+
 
 #include <format>
 #include <iostream>
@@ -7,7 +8,7 @@
 
 namespace Kekoa::Test {
 
-	#define USE_ANSI_COLORS
+	#define KEKOA_TEST_USE_ANSI_COLORS
 
 	struct result {
 		bool passed;
@@ -25,7 +26,7 @@ namespace Kekoa::Test {
 	}
 
 	void Assert(result _result) {
-		#ifdef USE_ANSI_COLORS
+		#ifdef KEKOA_TEST_USE_ANSI_COLORS
 			std::cout << (_result.passed ? std::format("\033[32mAssertion succeded {}\033[0m\n", _result.message) : std::format("\033[31mAssertion FAILED {}\033[0m\n", _result.message));
 		#else
 			std::cout << (_result.passed ? std::format("Assertion succeded {}\n", _result.message) : std::format("Assertion FAILED {}\n", _result.message));
@@ -34,4 +35,5 @@ namespace Kekoa::Test {
 
 }
 
-#endif //TEST_H_INCLUDED
+
+#endif //KEKOA_TEST_H_INCLUDED
