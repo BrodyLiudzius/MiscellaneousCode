@@ -5,9 +5,6 @@
 #include <cmath> // std::sqrt
 #include <type_traits> // static_assert, std::is_arithmetic
 
-#include "float.hpp"
-#include "int.hpp"
-
 
 namespace Kekoa {
 

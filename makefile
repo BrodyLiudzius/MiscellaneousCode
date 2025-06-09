@@ -1,2 +1,2 @@
 tests/Test:
-	g++ -o tests/Test tests/main.cpp -I ./src -std=c++20 -Wpedantic
+	g++ -o build/Test tests/main.cpp -Isource -Itests -std=c++20 -Wpedantic -O3

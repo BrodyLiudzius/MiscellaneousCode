@@ -1,5 +1,8 @@
-#ifndef PID_HPP_INCLUDED
-#define PID_HPP_INCLUDED
+#ifndef KEKOA_PID_HPP_INCLUDED
+#define KEKOA_PID_HPP_INCLUDED
+
+
+
 
 namespace Kekoa {
 
@@ -11,4 +14,4 @@ namespace Kekoa {
 }
 
 
-#endif //PID_HPP_INCLUDED
+#endif //KEKOA_PID_HPP_INCLUDED

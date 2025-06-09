@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 
+
 namespace Kekoa::Test {
 
 	#define KEKOA_TEST_USE_ANSI_COLORS
