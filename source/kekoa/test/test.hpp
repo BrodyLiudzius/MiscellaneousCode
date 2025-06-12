@@ -1,3 +1,9 @@
+//      project: https://github.com/BrodyLiudzius/MiscellaneousCode
+//         file: test.hpp
+//       author: Brody Liudzius
+//      license: MIT License
+//  description: This file adds functions for code testing and verification
+
 #ifndef KEKOA_TEST_H_INCLUDED
 #define KEKOA_TEST_H_INCLUDED
 

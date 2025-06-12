@@ -1,3 +1,10 @@
+//      project: https://github.com/BrodyLiudzius/MiscellaneousCode
+//         file: vector.hpp
+//       author: Brody Liudzius
+//      license: MIT License
+//  description: This file adds types for cartesian vectors
+
+
 #ifndef KEKOA_VECTOR_HPP_INCLUDED
 #define KEKOA_VECTOR_HPP_INCLUDED
 

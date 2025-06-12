@@ -1,5 +1,9 @@
-// float.hpp
-// This file provides aliases for floating point numbers of different precisions
+//      project: https://github.com/BrodyLiudzius/MiscellaneousCode
+//         file: float.hpp
+//       author: Brody Liudzius
+//      license: MIT License
+//  description: This file adds aliases for floating point types of varying widths
+
 
 // #toDo:
 // - Add <stdfloat> types

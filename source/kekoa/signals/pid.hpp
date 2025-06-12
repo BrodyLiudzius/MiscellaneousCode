@@ -1,3 +1,10 @@
+//      project: https://github.com/BrodyLiudzius/MiscellaneousCode
+//         file: pid.hpp
+//       author: Brody Liudzius
+//      license: MIT License
+//  description: This file implements PID control loops
+
+
 #ifndef KEKOA_PID_HPP_INCLUDED
 #define KEKOA_PID_HPP_INCLUDED
 

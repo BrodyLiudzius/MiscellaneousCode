@@ -1,9 +1,17 @@
-#ifndef KEOKA_INT_HPP_INCLUDED
-#define KEOKA_INT_HPP_INCLUDED
+//      project: https://github.com/BrodyLiudzius/MiscellaneousCode
+//         file: int.hpp
+//       author: Brody Liudzius
+//      license: MIT License
+//  description: This file adds aliases for integer types of varying widths
+
 
 // #toDo:
 // - Consider adding fast types as included in <cstdint>
 // - 
+
+
+#ifndef KEOKA_INT_HPP_INCLUDED
+#define KEOKA_INT_HPP_INCLUDED
 
 
 // Include cstdint if available
