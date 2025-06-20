@@ -10,7 +10,10 @@
 
 
 #include <cmath> // std::sqrt
-#include <type_traits> // static_assert, std::is_arithmetic
+#include <type_traits> // static_assert, std::is_arithmetic, std::is_pod
+
+
+#define KEKOA_VECTOR_ENFORCE_POD
 
 
 namespace Kekoa {
@@ -23,6 +26,9 @@ namespace Kekoa {
 	struct vec2 {
 		static_assert(std::is_arithmetic<T>::value, "vec2 must have an arithmetic type.");
 		T x, y;
+
+		inline constexpr vec2() : x(T(0)), y(T(0)) {}
+		inline constexpr vec2(T _x, T _y) : x(_x), y(_y) {}
 
 		inline constexpr vec2<T>& operator = (const vec2<T> &_vec) {
 			if (this != &_vec) {
@@ -65,6 +71,9 @@ namespace Kekoa {
 	struct vec3 {
 		static_assert(std::is_arithmetic<T>::value, "vec3 must have an arithmetic type.");
 		T x, y, z;
+
+		inline constexpr vec3() : x(T(0)), y(T(0)), z(T(0)) {}
+		inline constexpr vec3(T _x, T _y, T _z) : x(_x), y(_y), z(_z) {}
 
 		inline constexpr vec3<T>& operator = (const vec3<T> &_vec) {
 			if (this != &_vec) {
@@ -112,6 +121,9 @@ namespace Kekoa {
 	struct vec4 {
 		static_assert(std::is_arithmetic<T>::value, "vec4 must have an arithmetic type.");
 		T x, y, z, w;
+
+		inline constexpr vec4() : x(T(0)), y(T(0)), z(T(0), w(T(0))) {}
+		inline constexpr vec4(T _x, T _y, T _z) : x(_x), y(_y), z(_z), w(_w) {}
 
 		inline constexpr vec4<T>& operator = (const vec4<T> &_vec) {
 			if (this != &_vec) {

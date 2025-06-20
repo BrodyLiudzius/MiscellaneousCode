@@ -18,14 +18,14 @@
 #if defined(__has_include)
 	#if __has_include(<cstdint>)
 		#include <cstdint>
-		#define __KEKOA_USE_CSTDINT
+		#define KEKOA_USE_CSTDINT
 	#endif
 #endif
 
 
 namespace Kekoa {
 	
-	#if defined(__KEKOA_USE_CSTDINT) // If Standard Library Integers Available
+	#if defined(KEKOA_USE_CSTDINT) // If Standard Library Integers Available
 		typedef int8_t   i8  ;
 		typedef int16_t  i16 ;
 		typedef int32_t  i32 ;

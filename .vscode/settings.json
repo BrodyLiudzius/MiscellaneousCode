@@ -75,6 +75,7 @@
 		"variant": "cpp",
 		"xhash": "cpp",
 		"memory_resource": "cpp",
-		"string_view": "cpp"
+		"string_view": "cpp",
+		"stdfloat": "cpp"
 	}
 }
